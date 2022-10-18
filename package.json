@@ -6,7 +6,12 @@
   "dependencies": {
     "@babel/runtime": "^7.18.6",
     "ahooks": "^3.5.2",
-    "happypack": "^5.0.1"
+    "antd": "^4.23.5",
+    "happypack": "^5.0.1",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-router": "^5.0.1",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",

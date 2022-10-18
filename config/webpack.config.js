@@ -39,6 +39,7 @@ module.exports = {
 
   // 输出
   output: {
+    publicPath: "/",
     path: path.resolve('dist'),
     filename: 'js/[name].boundle.js',
   },
@@ -90,7 +91,10 @@ module.exports = {
     }),
     // 定义全局变量 在组件中直接使用 PUBLIC_CDN_URL 即可拿到 http://localhost:7000
     new webpack.DefinePlugin({
-      PUBLIC_CDN_URL: JSON.stringify('http://localhost:7000')
+      PUBLIC_CDN_URL: JSON.stringify('http://localhost:7000'),
+      // "process.env": {
+      //   NODE_ENV: JSON.stringify("production")
+      // }
     }),
 
     // new Happypack({
@@ -147,7 +151,8 @@ module.exports = {
   resolve: {
     // 设置别名
     alias: {
-      '@components': './components'
+      '@/components': './components',
+      '@components': '../../components'
     },
     // 引入文件时省略后缀名，省略后缀名时先找 xxx.js 如果没找到则找 xxx.jsx 以此类推，知道找到文件为止
     extensions: [ '.css', '.js', '.jsx', '.ts', '.tsx', '.less']
@@ -179,7 +184,7 @@ module.exports = {
       //   use: 'Happypack/loader?id=js',
       // },
       {
-        test: /\.m?js$/,
+        test: /\.m?js|tsx|ts$/,
         exclude: /node_modules/, // 解析时不解析node_modules文件
         use: {
           loader: "babel-loader",

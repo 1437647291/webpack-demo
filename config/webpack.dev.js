@@ -1,4 +1,5 @@
 const { merge } = require('webpack-merge');
+const path = require('path');
 const commonConfig = require('./webpack.config');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -7,8 +8,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = merge(commonConfig, {
   mode: 'development',
   devServer: {
+    historyApiFallback: true,
+    // static: path.join(__dirname, "src"),
     host: 'localhost',
-    port: 7000,
+    port: 3000,
     compress: true,
     // open: true, // 是否直接打开页面
     hot: true, // 热更新
@@ -17,14 +20,15 @@ module.exports = merge(commonConfig, {
     // },
 
     // 配置代理，解决请求跨域
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        // pathRewrite: {
-        //   '^/api': ''
-        // }
-      },
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:3000',
+    //     // pathRewrite: {
+    //     //   '^/api': ''
+    //     // }
+    //   },
+    // },
+    
     
     // 前端自己mock数据 不常用
     // onBeforeSetupMiddleware: (devServer) => {
@@ -42,11 +46,11 @@ module.exports = merge(commonConfig, {
   plugins: [
     // 热更新
     new webpack.HotModuleReplacementPlugin(),
-    new CopyWebpackPlugin({
-      patterns: [
-        { from: './public', to: '' }
-      ]
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     { from: './public', to: '' }
+    //   ]
+    // }),
   ],
 
   // 增加文件映射，报错了会告诉你是哪行，哪列出错，用于调试
