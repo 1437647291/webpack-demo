@@ -15,19 +15,27 @@ module.exports = merge(commonConfig, {
     compress: true,
     // open: true, // 是否直接打开页面
     hot: true, // 热更新
-    // client: {
-    //   progress: true, // 设置进度条 会在浏览器的控制台看到
-    // },
+    client: {
+      progress: true, // 设置进度条 会在浏览器的控制台看到
+    },
 
     // 配置代理，解决请求跨域
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://localhost:3000',
-    //     // pathRewrite: {
-    //     //   '^/api': ''
-    //     // }
-    //   },
-    // },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    proxy: {
+      '/api': {
+        // target: 'http://127.0.0.1:8100',
+        target: 'http://172.16.1.206:8100',
+        // ws: true,
+        xfwd: false,
+        changeOrigin: true,
+        // secure: false,
+        pathRewrite: {
+          '^/api': ''
+        }
+      },
+    },
     
     
     // 前端自己mock数据 不常用

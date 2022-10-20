@@ -1,14 +1,33 @@
-import React from 'react';
-import { Button, Select, Form, Input } from 'antd';
+import React, { useState } from 'react';
+import { useUpdateEffect } from 'ahooks';
+import { Button, Select, Form, Input, message } from 'antd';
 import './index.less';
 import CreateAlgorithm from '../../components/CreateAlgorithm';
+import { getAes } from '../../api';
 
 const { Option } = Select;
 
 const AlgorithmOne = () => {
+  const [content, setContent] = useState([]);
+  const [newContent, setNewContent] = useState([]);
+
   const onFinish = (values) => {
-    console.log('Success:', values);
+    setContent([]);
+    setNewContent([]);
+    getAes(values).then(res => {
+      const { data, msg } = res;
+      message.success(msg);
+      setInterval(() => {
+        if (data.course.length) {
+          setContent([...data.course.splice(0, 5)]);
+        }
+      }, 1000)
+    });
   };
+
+  useUpdateEffect(() => {
+    setNewContent([...newContent, ...content])
+  }, [content])
 
   return (
     <div className='algorithm-one'>
@@ -41,6 +60,24 @@ const AlgorithmOne = () => {
           </Form.Item>
 
           <Form.Item
+            label="明文"
+            name="msg"
+            rules={[
+              { required: true, message: '请输入明文' },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (value.length < 16) {
+                    return Promise.reject(new Error('明文长度不足16位!'));
+                  }
+                  return Promise.resolve();
+                },
+              }),
+            ]}
+          >
+            <Input placeholder="请输入明文" />
+          </Form.Item>
+
+          {/* <Form.Item
             label="方式"
             name="type"
             rules={[
@@ -48,10 +85,9 @@ const AlgorithmOne = () => {
             ]}
           >
             <Select style={{ width: 120 }} placeholder="请选择方式">
-              <Option value="1">密文</Option>
-              <Option value="2">明文</Option>
+              <Option value="2">加密</Option>
             </Select>
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">
@@ -61,7 +97,13 @@ const AlgorithmOne = () => {
         </Form>
 
       </div>
-      <div className='algorithm-show'></div>
+      <div className='algorithm-show'>
+          {
+            newContent.map((item, index) => (
+              <div key={index} className='algorithm-show-item'>{item}</div>
+            ))
+          }
+      </div>
     </div>
   )
 };
