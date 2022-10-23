@@ -12,7 +12,8 @@ const RSA1 = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = values => {
-    console.log('values', values);
+    setContent([]);
+    setNewContent([]);
     getRsa(values).then(res => {
       const { data, msg } = res;
       message.success(msg);

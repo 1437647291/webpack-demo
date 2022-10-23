@@ -48,11 +48,45 @@ const getDestest = data => {
   })
 };
 
+const getDesfile = data => {
+  return service({
+    url: '/bysj/encryp/desfile',
+    method: 'POST',
+    data: data,
+  })
+};
+
+const getIdea = data => {
+  return service({
+    url: '/bysj/encryp/idea',
+    method: 'POST',
+    data: data,
+  })
+};
+
+const getEcc = () => {
+  return service({
+    url: '/bysj/encryp/ecc',
+    method: 'POST'
+  })
+};
+
+const getEcc2 = () => {
+  return service({
+    url: '/bysj/encryp/ecc2',
+    method: 'POST'
+  })
+};
+
 export {
   getAes,
   getAesall3,
   getAes128core,
   getRsa,
   getRsa2,
-  getDestest
+  getDestest,
+  getDesfile,
+  getIdea,
+  getEcc,
+  getEcc2
 }

@@ -10,7 +10,8 @@ const RSA2 = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = values => {
-    console.log(values);
+    setContent([]);
+    setNewContent([]);
     const { size, msg } = values;
     getRsa2({ size: Number(size), msg: Number(msg) }).then(res => {
       const { data, msg } = res;

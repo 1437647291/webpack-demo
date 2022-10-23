@@ -14,6 +14,15 @@ const AesEncryptionDecryption = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = values => {
+    const { key, msg } = values;
+    if (key && key.length < 16) {
+      message.error('密钥长度不足16位！');
+      return;
+    };
+    if (msg && msg.length < 16) {
+      message.error('明文长度不足16位！');
+      return;
+    };
     setContent([]);
     setNewContent([]);
     getAesall3(values).then(res => {
@@ -28,7 +37,6 @@ const AesEncryptionDecryption = () => {
   };
 
   useUpdateEffect(() => {
-    console.log(11111, content)
     setNewContent([...newContent, ...content])
   }, [content])
   
@@ -50,14 +58,6 @@ const AesEncryptionDecryption = () => {
             name="key"
             rules={[
               { required: true, message: '请输入密钥' },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (value.length < 16) {
-                    return Promise.reject(new Error('密钥长度不足16位!'));
-                  }
-                  return Promise.resolve();
-                },
-              }),
             ]}
           >
             <Input placeholder="请输入密钥" />
@@ -68,14 +68,6 @@ const AesEncryptionDecryption = () => {
             name="msg"
             rules={[
               { required: true, message: '请输入密文/明文' },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (value.length < 16) {
-                    return Promise.reject(new Error('密文/明文长度不足16位!'));
-                  }
-                  return Promise.resolve();
-                },
-              }),
             ]}
           >
             <Input placeholder="请输入密文/明文" />

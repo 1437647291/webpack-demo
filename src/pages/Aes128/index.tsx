@@ -12,6 +12,15 @@ const AlgorithmOne = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = (values) => {
+    const { key, msg } = values;
+    if (key && key.length < 16) {
+      message.error('密钥长度不足16位！');
+      return;
+    };
+    if (msg && msg.length < 16) {
+      message.error('明文长度不足16位！');
+      return;
+    };
     setContent([]);
     setNewContent([]);
     getAes(values).then(res => {
@@ -46,14 +55,6 @@ const AlgorithmOne = () => {
             name="key"
             rules={[
               { required: true, message: '请输入密钥' },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (value.length < 16) {
-                    return Promise.reject(new Error('密钥长度不足16位!'));
-                  }
-                  return Promise.resolve();
-                },
-              }),
             ]}
           >
             <Input placeholder="请输入密钥" />
@@ -64,30 +65,10 @@ const AlgorithmOne = () => {
             name="msg"
             rules={[
               { required: true, message: '请输入明文' },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (value.length < 16) {
-                    return Promise.reject(new Error('明文长度不足16位!'));
-                  }
-                  return Promise.resolve();
-                },
-              }),
             ]}
           >
             <Input placeholder="请输入明文" />
           </Form.Item>
-
-          {/* <Form.Item
-            label="方式"
-            name="type"
-            rules={[
-              { required: true, message: '请选择方式' },
-            ]}
-          >
-            <Select style={{ width: 120 }} placeholder="请选择方式">
-              <Option value="2">加密</Option>
-            </Select>
-          </Form.Item> */}
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">

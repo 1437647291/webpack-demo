@@ -25,8 +25,8 @@ module.exports = merge(commonConfig, {
     },
     proxy: {
       '/api': {
-        // target: 'http://127.0.0.1:8100',
-        target: 'http://172.16.1.206:8100',
+        target: 'http://127.0.0.1:8100',
+        // target: 'http://172.16.1.206:8100',
         // ws: true,
         xfwd: false,
         changeOrigin: true,

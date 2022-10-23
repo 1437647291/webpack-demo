@@ -12,19 +12,30 @@ const Des = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = values => {
-      getDestest(values).then(res => {
-        const { data, msg, code } = res;
-        if (code === 200) {
-          message.success(msg);
-          setInterval(() => {
-            if (data.course.length) {
-              setContent([...data.course.splice(0, 50)]);
-            }
-          }, 1000)
-        } else {
-          message.error(msg);
-        }
-      })
+    // const { key, msg } = values;
+    // if (key && key.length < 16) {
+    //   message.error('密钥长度不足16位！');
+    //   return;
+    // };
+    // if (msg && msg.length < 16) {
+    //   message.error('明文长度不足16位！');
+    //   return;
+    // };
+    setContent([]);
+    setNewContent([]);
+    getDestest(values).then(res => {
+      const { data, msg, code } = res;
+      if (code === 200) {
+        message.success(msg);
+        setInterval(() => {
+          if (data.course.length) {
+            setContent([...data.course.splice(0, 50)]);
+          }
+        }, 1000)
+      } else {
+        message.error(msg);
+      }
+    });
   };
 
   useUpdateEffect(() => {

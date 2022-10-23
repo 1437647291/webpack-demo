@@ -13,8 +13,12 @@ import AesEncryptionDecryption from './pages/AesEncryptionDecryption';
 import AesText from './pages/AesText';
 import Information from './pages/Information';
 import Des from './pages/Des';
+import DesFile from './pages/DesFile';
 import RSA1 from './pages/RSA1';
 import RSA2 from './pages/RSA2';
+import Idea from './pages/Idea';
+import Ecc from './pages/Ecc';
+import Ecc2 from './pages/Ecc2';
 
 const { Header, Sider, Content } = Layout;
 
@@ -70,7 +74,17 @@ const App = props => {
               {
                 key: '2',
                 icon: <VideoCameraOutlined />,
-                label: <Link style={{ color: '#fff' }} to="/Des">DES</Link>,
+                label: 'DES',
+                children: [
+                  {
+                    key: '2-1',
+                    label: <Link style={{ color: '#fff' }} to="/des">DES1</Link>,
+                  },
+                  {
+                    key: '2-2',
+                    label: <Link style={{ color: '#fff' }} to="/desFile">RSA2</Link>,
+                  },
+                ]
               },
               {
                 key: '3',
@@ -90,12 +104,22 @@ const App = props => {
               {
                 key: '4',
                 icon: <UploadOutlined />,
-                label: <Link style={{ color: '#fff' }} to="/algorithmFour">ECC</Link>,
+                label: 'ECC',
+                children: [
+                  {
+                    key: '4-1',
+                    label: <Link style={{ color: '#fff' }} to="/ecc">ECC1</Link>,
+                  },
+                  {
+                    key: '4-2',
+                    label: <Link style={{ color: '#fff' }} to="/ecc2">ECC2</Link>,
+                  },
+                ]
               },
               {
                 key: '5',
                 icon: <UploadOutlined />,
-                label: <Link style={{ color: '#fff' }} to="/algorithmFive">IDEA</Link>,
+                label: <Link style={{ color: '#fff' }} to="/idea">IDEA</Link>,
               },
             ]}
           />
@@ -128,14 +152,26 @@ const App = props => {
               <Route path="/information">
                 <Information />
               </Route>
-              <Route path="/Des">
+              <Route path="/des">
                 <Des />
+              </Route>
+              <Route path="/desFile">
+                <DesFile />
               </Route>
               <Route path="/RSA1">
                 <RSA1 />
               </Route>
               <Route path="/RSA2">
                 <RSA2 />
+              </Route>
+              <Route path="/idea">
+                <Idea />
+              </Route>
+              <Route path="/ecc">
+                <Ecc />
+              </Route>
+              <Route path="/ecc2">
+                <Ecc2 />
               </Route>
             </Switch>
           </Content>
