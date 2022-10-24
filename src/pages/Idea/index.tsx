@@ -154,7 +154,7 @@ const Idea = () => {
           <Col span={16}>
             <div className='idea-form-wrap'>
               <Select style={{ width: 120 }} placeholder="请选择方式" onChange={changeSel}>
-                <Option value="3">解密</Option>
+                <Option value="3">加解密</Option>
                 <Option value="1">加密</Option>
               </Select>
             </div>

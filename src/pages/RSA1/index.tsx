@@ -12,16 +12,19 @@ const RSA1 = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = values => {
-    setContent([]);
     setNewContent([]);
     getRsa(values).then(res => {
-      const { data, msg } = res;
-      message.success(msg);
-      setInterval(() => {
-        if (data.course.length) {
-          setContent([...data.course.splice(0, 5)]);
-        }
-      }, 1000)
+      const { data, msg, code } = res;
+      if (code === 200) {
+        message.success(msg);
+        setInterval(() => {
+          if (data.course.length) {
+            setContent([...data.course.splice(0, 5)]);
+          }
+        }, 1000);
+      } else {
+        message.error(msg);
+      }
     })
   };
 
@@ -41,26 +44,6 @@ const RSA1 = () => {
           style={{ marginTop: '24px' }}
         >
           <Form.Item
-            label="公钥"
-            name="public_key"
-            rules={[
-              { required: true, message: '请输入公钥' },
-            ]}
-          >
-            <Input placeholder="请输入公钥" />
-          </Form.Item>
-
-          <Form.Item
-            label="明文"
-            name="text"
-            rules={[
-              { required: true, message: '请输入明文' },
-            ]}
-          >
-            <Input placeholder="请输入明文" />
-          </Form.Item>
-
-          <Form.Item
             label="素数 p"
             name="p"
             rules={[
@@ -78,6 +61,26 @@ const RSA1 = () => {
             ]}
           >
             <Input placeholder="请输入素数 q" />
+          </Form.Item>
+
+          <Form.Item
+            label="公钥"
+            name="public_key"
+            rules={[
+              { required: true, message: '请输入公钥' },
+            ]}
+          >
+            <Input placeholder="请输入公钥" />
+          </Form.Item>
+
+          <Form.Item
+            label="明文"
+            name="text"
+            rules={[
+              { required: true, message: '请输入明文' },
+            ]}
+          >
+            <Input placeholder="请输入明文" />
           </Form.Item>
 
           <Form.Item

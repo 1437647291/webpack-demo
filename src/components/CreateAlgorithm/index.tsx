@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
 import { Button, Input, message } from 'antd';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { createKey } from '../../api';
+
 import './index.less'
 
 const CreateAlgorithm = () => {
   const [val, setVal] = useState('');
 
   const create = () => {
-    setVal(Math.random().toString().slice(2, 18));
+    createKey().then(res => {
+      const { code, data, msg } = res;
+      if (code === 200) {
+        message.success(msg);
+        setVal(data.key);
+      } else {
+        message.error(msg);
+      };
+    })
   };
   return (
     <div className='create-algorithm'>

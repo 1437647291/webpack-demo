@@ -11,8 +11,12 @@ const AesText = () => {
 
   const onFinish = values => {
     getAes128core(values).then(res => {
-      const { msg } = res;
-      message.success(msg);
+      const { msg, code } = res;
+      if (code === 200) {
+        message.success(msg);
+      } else {
+        message.error(msg);
+      };
     });
   };
 
@@ -48,7 +52,7 @@ const AesText = () => {
           </Form.Item>
 
           <Form.Item
-            label="加密方式"
+            label="方式"
             name="code"
             rules={[
               { required: true, message: '请选择加密方式' },

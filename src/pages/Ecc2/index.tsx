@@ -10,16 +10,19 @@ const Ecc2 = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onEcc = () => {
-    setContent([]);
     setNewContent([]);
     getEcc2().then(res => {
-      const { data, msg } = res;
-      message.success(msg);
-      setInterval(() => {
-        if (data.course.length) {
-          setContent([...data.course.splice(0, 5)]);
-        }
-      }, 1000)
+      const { data, msg, code } = res;
+      if (code === 200) {
+        message.success(msg);
+        setInterval(() => {
+          if (data.course.length) {
+            setContent([...data.course.splice(0, 5)]);
+          }
+        }, 1000)
+      } else {
+        message.error(msg);
+      }
     })
   };
 

@@ -10,17 +10,20 @@ const RSA2 = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = values => {
-    setContent([]);
     setNewContent([]);
     const { size, msg } = values;
     getRsa2({ size: Number(size), msg: Number(msg) }).then(res => {
-      const { data, msg } = res;
-      message.success(msg);
-      setInterval(() => {
-        if (data.course.length) {
-          setContent([...data.course.splice(0, 5)]);
-        }
-      }, 1000)
+      const { data, msg, code } = res;
+      if (code === 200) {
+        message.success(msg);
+        setInterval(() => {
+          if (data.course.length) {
+            setContent([...data.course.splice(0, 5)]);
+          }
+        }, 1000)
+      } else {
+        message.error(msg);
+      }
     })
   };
 

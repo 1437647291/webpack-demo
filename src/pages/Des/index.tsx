@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useUpdateEffect } from 'ahooks';
 import { Form, Input, Button, message, Select } from 'antd';
 import { getDestest } from '../../api';
+import CreateAlgorithm from '../../components/CreateAlgorithm';
 
 import './index.less';
 
@@ -12,16 +13,6 @@ const Des = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = values => {
-    // const { key, msg } = values;
-    // if (key && key.length < 16) {
-    //   message.error('密钥长度不足16位！');
-    //   return;
-    // };
-    // if (msg && msg.length < 16) {
-    //   message.error('明文长度不足16位！');
-    //   return;
-    // };
-    setContent([]);
     setNewContent([]);
     getDestest(values).then(res => {
       const { data, msg, code } = res;
@@ -45,6 +36,7 @@ const Des = () => {
   return (
     <div className='des'>
       <div className='des-form'>
+      <CreateAlgorithm />
       <Form
           name="basic"
           labelCol={{ span: 6 }}
@@ -64,10 +56,10 @@ const Des = () => {
           </Form.Item>
 
           <Form.Item
-            label="明文"
+            label="明文/密文"
             name="msg"
             rules={[
-              { required: true, message: '请输入明文' },
+              { required: true, message: '请输入明文/密文' },
             ]}
           >
             <Input placeholder="请输入明文" />

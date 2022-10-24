@@ -78,6 +78,13 @@ const getEcc2 = () => {
   })
 };
 
+const createKey = () => {
+  return service({
+    url: '/bysj/encryp/create_key',
+    method: 'POST'
+  })
+};
+
 export {
   getAes,
   getAesall3,
@@ -88,5 +95,6 @@ export {
   getDesfile,
   getIdea,
   getEcc,
-  getEcc2
+  getEcc2,
+  createKey
 }

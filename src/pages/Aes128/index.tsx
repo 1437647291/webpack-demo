@@ -12,30 +12,34 @@ const AlgorithmOne = () => {
   const [newContent, setNewContent] = useState([]);
 
   const onFinish = (values) => {
+    // setContent([]);
+    setNewContent([]);
     const { key, msg } = values;
-    if (key && key.length < 16) {
+    if (key && key.length !== 16) {
       message.error('密钥长度不足16位！');
       return;
     };
-    if (msg && msg.length < 16) {
+    if (msg && msg.length !== 16) {
       message.error('明文长度不足16位！');
       return;
     };
-    setContent([]);
-    setNewContent([]);
     getAes(values).then(res => {
-      const { data, msg } = res;
-      message.success(msg);
-      setInterval(() => {
-        if (data.course.length) {
-          setContent([...data.course.splice(0, 5)]);
-        }
-      }, 1000)
+      const { data, msg, code } = res;
+      if (code === 200) {
+        message.success(msg);
+        setInterval(() => {
+          if (data.course.length) {
+            setContent([...data.course.splice(0, 5)]);
+          }
+        }, 1000);
+      } else {
+        message.error(msg);
+      }
     });
   };
 
   useUpdateEffect(() => {
-    setNewContent([...newContent, ...content])
+    setNewContent([...newContent, ...content]);
   }, [content])
 
   return (

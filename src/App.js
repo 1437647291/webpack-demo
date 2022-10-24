@@ -78,11 +78,11 @@ const App = props => {
                 children: [
                   {
                     key: '2-1',
-                    label: <Link style={{ color: '#fff' }} to="/des">DES1</Link>,
+                    label: <Link style={{ color: '#fff' }} to="/des">DES加解密</Link>,
                   },
                   {
                     key: '2-2',
-                    label: <Link style={{ color: '#fff' }} to="/desFile">RSA2</Link>,
+                    label: <Link style={{ color: '#fff' }} to="/desFile">DES加密文件</Link>,
                   },
                 ]
               },
@@ -93,11 +93,11 @@ const App = props => {
                 children: [
                   {
                     key: '3-1',
-                    label: <Link style={{ color: '#fff' }} to="/RSA1">RSA1</Link>,
+                    label: <Link style={{ color: '#fff' }} to="/RSA1">RSA加解密</Link>,
                   },
                   {
                     key: '3-2',
-                    label: <Link style={{ color: '#fff' }} to="/RSA2">RSA2</Link>,
+                    label: <Link style={{ color: '#fff' }} to="/RSA2">RSA大数</Link>,
                   },
                 ]
               },
@@ -108,11 +108,11 @@ const App = props => {
                 children: [
                   {
                     key: '4-1',
-                    label: <Link style={{ color: '#fff' }} to="/ecc">ECC1</Link>,
+                    label: <Link style={{ color: '#fff' }} to="/ecc">ECC加解密</Link>,
                   },
                   {
                     key: '4-2',
-                    label: <Link style={{ color: '#fff' }} to="/ecc2">ECC2</Link>,
+                    label: <Link style={{ color: '#fff' }} to="/ecc2">ECC数字签名</Link>,
                   },
                 ]
               },
