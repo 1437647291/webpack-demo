@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import { Button, Input, message } from 'antd';
+import { Button, Input, message, Select } from 'antd';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { createKey } from '../../api';
 
-import './index.less'
+import './index.less';
+
+const { Option } = Select;
 
 const CreateAlgorithm = () => {
   const [val, setVal] = useState('');
+  const [selValue, setSelValue] = useState(8);
+
+  const handleChange = value => {
+    setSelValue(value);
+  };
 
   const create = () => {
-    createKey().then(res => {
+    createKey(selValue).then(res => {
       const { code, data, msg } = res;
       if (code === 200) {
         message.success(msg);
@@ -19,10 +26,17 @@ const CreateAlgorithm = () => {
       };
     })
   };
+
   return (
     <div className='create-algorithm'>
       <div className='algorithm'>
         <span>密钥：</span>
+        <Select value={selValue} style={{ width: 120 }} onChange={handleChange}>
+          <Option value={8}>8位</Option>
+          <Option value={16}>16位</Option>
+          <Option value={24}>24位</Option>
+          <Option value={32}>32位</Option>
+        </Select>
         <Input value={val} disabled={true} placeholder="请生成密钥" />
         <CopyToClipboard text={val} onCopy={() => message.success('复制成功!')}>
           <Button type="primary">复制</Button>

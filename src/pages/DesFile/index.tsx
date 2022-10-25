@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Select, Button, message } from 'antd';
 import { getDesfile } from '../../api';
+import CreateFile from '../../components/CreateFile';
 
 import './index.less';
 
@@ -23,6 +24,7 @@ const DesFile = () => {
   return (
     <div className='des-file'>
       <div className='des-file-form'>
+        <CreateFile />
         <Form
           name="basic"
           labelCol={{ span: 6 }}
@@ -70,13 +72,6 @@ const DesFile = () => {
             </Button>
           </Form.Item>
         </Form>
-      </div>
-      <div className='des-file-show'>
-        {
-          content.map(item => (
-            <div className='des-file-show-item'>{item}</div>
-          ))
-        }
       </div>
     </div>
   )
