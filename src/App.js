@@ -11,6 +11,7 @@ import { BrowserRouter, Route, useHistory, Link, Switch } from 'react-router-dom
 import Aes128 from './pages/Aes128';
 import AesEncryptionDecryption from './pages/AesEncryptionDecryption';
 import AesText from './pages/AesText';
+import AesPriview from './pages/AesPriview';
 import Information from './pages/Information';
 import Des from './pages/Des';
 import DesFile from './pages/DesFile';
@@ -63,8 +64,11 @@ const App = props => {
                   {
                     key: '1-3',
                     label: <Link style={{ color: '#fff' }} to="/aesText">AES文本内容</Link>,
-                  }
-                  ,
+                  },
+                  {
+                    key: '1-5',
+                    label: <Link style={{ color: '#fff' }} to="/aesPriview">AES加密演示</Link>,
+                  },
                   {
                     key: '1-4',
                     label: <Link style={{ color: '#fff' }} to="/information">相关资料</Link>,
@@ -172,6 +176,9 @@ const App = props => {
               </Route>
               <Route path="/ecc2">
                 <Ecc2 />
+              </Route>
+              <Route path="/aesPriview">
+                <AesPriview />
               </Route>
             </Switch>
           </Content>
