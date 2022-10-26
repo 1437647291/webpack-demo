@@ -15,12 +15,9 @@ const AesEncryptionDecryption = () => {
 
   const onFinish = values => {
     setNewContent([]);
-    const { key, msg } = values;
-    if (key && key.length !== 16) {
-      message.error('密钥长度不足16位！');
-      return;
-    };
-    if (msg && msg.length !== 16) {
+    const { key, msg, type } = values;
+    console.log(type)
+    if (type === '1' && msg && msg.length !== 16) {
       message.error('明文长度不足16位！');
       return;
     };

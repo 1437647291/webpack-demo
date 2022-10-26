@@ -29,9 +29,10 @@ const RSA1 = () => {
   };
 
   useUpdateEffect(() => {
+    console.log(content)
     setNewContent([...newContent, ...content])
   }, [content])
-
+  console.log('newContent', newContent)
   return (
     <div className='rsa1'>
       <div className='rsa1-form'>
@@ -105,9 +106,9 @@ const RSA1 = () => {
       </div>
       <div className='rsa1-show'>
           {
-            newContent.map((item, index) => {
+            newContent.map((item, index) => (
               <div key={index} className='rsa1-show-item'>{item}</div>
-            })
+            ))
           }
       </div>
     </div>
