@@ -20,6 +20,7 @@ import RSA2 from './pages/RSA2';
 import Idea from './pages/Idea';
 import Ecc from './pages/Ecc';
 import Ecc2 from './pages/Ecc2';
+import SimulatedLogin from './pages/SimulatedLogin';
 
 const { Header, Sider, Content } = Layout;
 
@@ -68,6 +69,10 @@ const App = props => {
                   {
                     key: '1-5',
                     label: <Link style={{ color: '#fff' }} to="/aesPriview">AES加密演示</Link>,
+                  },
+                  {
+                    key: '1-6',
+                    label: <Link style={{ color: '#fff' }} to="/simulatedLogin">模拟登陆</Link>,
                   },
                   {
                     key: '1-4',
@@ -179,6 +184,9 @@ const App = props => {
               </Route>
               <Route path="/aesPriview">
                 <AesPriview />
+              </Route>
+              <Route path="/simulatedLogin">
+                <SimulatedLogin />
               </Route>
             </Switch>
           </Content>

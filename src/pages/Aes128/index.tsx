@@ -15,10 +15,6 @@ const AlgorithmOne = () => {
     // setContent([]);
     setNewContent([]);
     const { key, msg } = values;
-    if (key && key.length !== 16) {
-      message.error('密钥长度不足16位！');
-      return;
-    };
     if (msg && msg.length !== 16) {
       message.error('明文长度不足16位！');
       return;
