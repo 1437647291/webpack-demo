@@ -21,6 +21,7 @@ import Idea from './pages/Idea';
 import Ecc from './pages/Ecc';
 import Ecc2 from './pages/Ecc2';
 import SimulatedLogin from './pages/SimulatedLogin';
+import Md5 from './pages/Md5';
 
 const { Header, Sider, Content } = Layout;
 
@@ -130,6 +131,11 @@ const App = props => {
                 icon: <UploadOutlined />,
                 label: <Link style={{ color: '#fff' }} to="/idea">IDEA</Link>,
               },
+              {
+                key: '6',
+                icon: <UploadOutlined />,
+                label: <Link style={{ color: '#fff' }} to="/md5">MD5</Link>,
+              },
             ]}
           />
         </Sider>
@@ -187,6 +193,9 @@ const App = props => {
               </Route>
               <Route path="/simulatedLogin">
                 <SimulatedLogin />
+              </Route>
+              <Route path="/md5">
+                <Md5 />
               </Route>
             </Switch>
           </Content>

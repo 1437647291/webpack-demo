@@ -12,7 +12,6 @@ const SimulatedLogin = () => {
   const [newPassContent, setNewPassContent] = useState([]);
 
   const onFinish = values => {
-    console.log('values', values);
     const { account, password } = values;
     getAes({ key: '3xftc9vw', msg: account }).then(res => {
       const { code, data, msg } = res;
