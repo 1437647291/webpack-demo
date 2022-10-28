@@ -34,6 +34,7 @@ const Ecc2 = () => {
     <div className='ecc2'>
       <div className='ecc2-form'>
         <Button type="primary" onClick={onEcc}>开始加密</Button>
+        <div className='ecc2-bg'></div>
       </div>
       <div className='ecc2-show'>
         {

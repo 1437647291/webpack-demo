@@ -22,6 +22,10 @@ import Ecc from './pages/Ecc';
 import Ecc2 from './pages/Ecc2';
 import SimulatedLogin from './pages/SimulatedLogin';
 import Md5 from './pages/Md5';
+import RSAInfo from './pages/RSAInfo';
+import DesInfo from './pages/DesInfo';
+import EccInfo from './pages/EccInfo';
+import AesInfo from './pages/AesInfo';
 
 const { Header, Sider, Content } = Layout;
 
@@ -94,6 +98,10 @@ const App = props => {
                     key: '2-2',
                     label: <Link style={{ color: '#fff' }} to="/desFile">DES加密文件</Link>,
                   },
+                  {
+                    key: '2-3',
+                    label: <Link style={{ color: '#fff' }} to="/desInfo">相关资料</Link>,
+                  },
                 ]
               },
               {
@@ -109,6 +117,10 @@ const App = props => {
                     key: '3-2',
                     label: <Link style={{ color: '#fff' }} to="/RSA2">RSA大数</Link>,
                   },
+                  {
+                    key: '3-3',
+                    label: <Link style={{ color: '#fff' }} to="/rsaInfo">相关资料</Link>,
+                  },
                 ]
               },
               {
@@ -123,6 +135,10 @@ const App = props => {
                   {
                     key: '4-2',
                     label: <Link style={{ color: '#fff' }} to="/ecc2">ECC数字签名</Link>,
+                  },
+                  {
+                    key: '4-3',
+                    label: <Link style={{ color: '#fff' }} to="/eccInfo">相关资料</Link>,
                   },
                 ]
               },
@@ -165,7 +181,7 @@ const App = props => {
                 <AesText />
               </Route>
               <Route path="/information">
-                <Information />
+                <AesInfo />
               </Route>
               <Route path="/des">
                 <Des />
@@ -196,6 +212,15 @@ const App = props => {
               </Route>
               <Route path="/md5">
                 <Md5 />
+              </Route>
+              <Route path="/rsaInfo">
+                <RSAInfo />
+              </Route>
+              <Route path="/desInfo">
+                <DesInfo />
+              </Route>
+              <Route path="/eccInfo">
+                <EccInfo />
               </Route>
             </Switch>
           </Content>
