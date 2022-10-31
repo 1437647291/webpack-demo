@@ -18,6 +18,7 @@ import DesFile from './pages/DesFile';
 import RSA1 from './pages/RSA1';
 import RSA2 from './pages/RSA2';
 import Idea from './pages/Idea';
+import IdeaInfo from './pages/IdeaInfo';
 import Ecc from './pages/Ecc';
 import Ecc2 from './pages/Ecc2';
 import SimulatedLogin from './pages/SimulatedLogin';
@@ -26,6 +27,13 @@ import RSAInfo from './pages/RSAInfo';
 import DesInfo from './pages/DesInfo';
 import EccInfo from './pages/EccInfo';
 import AesInfo from './pages/AesInfo';
+import Binary from './pages/Binary';
+import SM21 from './pages/SM21';
+import SM22 from './pages/SM22';
+import SM23 from './pages/SM23';
+import './utils/sm2';
+import './utils/sm3';
+import './utils/sm4';
 
 const { Header, Sider, Content } = Layout;
 
@@ -145,13 +153,47 @@ const App = props => {
               {
                 key: '5',
                 icon: <UploadOutlined />,
-                label: <Link style={{ color: '#fff' }} to="/idea">IDEA</Link>,
+                label: 'IDEA',
+                children: [
+                  {
+                    key: '5-1',
+                    label: <Link style={{ color: '#fff' }} to="/idea">IDEA加解密</Link>,
+                  },
+                  {
+                    key: '5-2',
+                    label: <Link style={{ color: '#fff' }} to="/ideaInfo">相关资料</Link>,
+                  },
+                ]
               },
               {
                 key: '6',
                 icon: <UploadOutlined />,
                 label: <Link style={{ color: '#fff' }} to="/md5">MD5</Link>,
               },
+              {
+                key: '7',
+                icon: <UploadOutlined />,
+                label: <Link style={{ color: '#fff' }} to="/binary">BINARY</Link>,
+              },
+              {
+                key: '8',
+                icon: <UploadOutlined />,
+                label: 'SM2',
+                children: [
+                  {
+                    key: '8-1',
+                    label: <Link style={{ color: '#fff' }} to="/sm21">sm2(1)</Link>,
+                  },
+                  {
+                    key: '8-2',
+                    label: <Link style={{ color: '#fff' }} to="/sm22">sm2(2)</Link>,
+                  },
+                  {
+                    key: '8-3',
+                    label: <Link style={{ color: '#fff' }} to="/sm23">sm2(3)</Link>,
+                  },
+                ]
+              }
             ]}
           />
         </Sider>
@@ -198,6 +240,9 @@ const App = props => {
               <Route path="/idea">
                 <Idea />
               </Route>
+              <Route path="/ideaInfo">
+                <IdeaInfo />
+              </Route>
               <Route path="/ecc">
                 <Ecc />
               </Route>
@@ -221,6 +266,18 @@ const App = props => {
               </Route>
               <Route path="/eccInfo">
                 <EccInfo />
+              </Route>
+              <Route path="/binary">
+                <Binary />
+              </Route>
+              <Route path="/sm21">
+                <SM21 />
+              </Route>
+              <Route path="/sm22">
+                <SM22 />
+              </Route>
+              <Route path="/sm23">
+                <SM23 />
               </Route>
             </Switch>
           </Content>
