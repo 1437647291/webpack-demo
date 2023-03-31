@@ -11,7 +11,7 @@ module.exports = merge(commonConfig, {
     historyApiFallback: true,
     // static: path.join(__dirname, "src"),
     host: 'localhost',
-    port: 3000,
+    port: 3001,
     compress: true,
     // open: true, // 是否直接打开页面
     hot: true, // 热更新
@@ -37,7 +37,11 @@ module.exports = merge(commonConfig, {
       },
     },
     
-    
+    // optimization: {
+    //   splitChunks: {
+    //     chunks: 'all'
+    //   }
+    // },
     // 前端自己mock数据 不常用
     // onBeforeSetupMiddleware: (devServer) => {
     //   devServer.app.get('/api/user', (req, res) => {

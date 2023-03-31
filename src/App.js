@@ -21,6 +21,7 @@ import Idea from './pages/Idea';
 import IdeaInfo from './pages/IdeaInfo';
 import Ecc from './pages/Ecc';
 import Ecc2 from './pages/Ecc2';
+import Ecc3 from './pages/Ecc3';
 import SimulatedLogin from './pages/SimulatedLogin';
 import Md5 from './pages/Md5';
 import RSAInfo from './pages/RSAInfo';
@@ -31,6 +32,7 @@ import Binary from './pages/Binary';
 import SM21 from './pages/SM21';
 import SM22 from './pages/SM22';
 import SM23 from './pages/SM23';
+import Test from './pages/test';
 import './utils/sm2';
 import './utils/sm3';
 import './utils/sm4';
@@ -141,6 +143,10 @@ const App = props => {
                     label: <Link style={{ color: '#fff' }} to="/ecc">ECC加解密</Link>,
                   },
                   {
+                    key: '4-4',
+                    label: <Link style={{ color: '#fff' }} to="/ecc3">ECC3加解密</Link>,
+                  },
+                  {
                     key: '4-2',
                     label: <Link style={{ color: '#fff' }} to="/ecc2">ECC数字签名</Link>,
                   },
@@ -150,6 +156,11 @@ const App = props => {
                   },
                 ]
               },
+              // {
+              //   key: '9',
+              //   icon: <UploadOutlined />,
+              //   label: <Link style={{ color: '#fff' }} to="/test">ECC3</Link>,
+              // },
               {
                 key: '5',
                 icon: <UploadOutlined />,
@@ -193,7 +204,12 @@ const App = props => {
                     label: <Link style={{ color: '#fff' }} to="/sm23">sm2(3)</Link>,
                   },
                 ]
-              }
+              },
+              // {
+              //   key: '9',
+              //   icon: <UploadOutlined />,
+              //   label: <Link style={{ color: '#fff' }} to="/test">TEST</Link>,
+              // }
             ]}
           />
         </Sider>
@@ -249,6 +265,9 @@ const App = props => {
               <Route path="/ecc2">
                 <Ecc2 />
               </Route>
+              <Route path="/ecc3">
+                <Ecc3 />
+              </Route>
               <Route path="/aesPriview">
                 <AesPriview />
               </Route>
@@ -279,6 +298,9 @@ const App = props => {
               <Route path="/sm23">
                 <SM23 />
               </Route>
+              {/* <Route path="/test">
+                <Test />
+              </Route> */}
             </Switch>
           </Content>
         </Layout>

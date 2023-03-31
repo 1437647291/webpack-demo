@@ -93,6 +93,14 @@ const createKeyFile = data => {
   })
 };
 
+const getEcc3 = data => {
+  return service({
+    url: `/bysj/encryp/ecc3`,
+    method: 'POST',
+    data: data,
+  })
+}
+
 
 export {
   getAes,
@@ -106,5 +114,6 @@ export {
   getEcc,
   getEcc2,
   createKey,
-  createKeyFile
+  createKeyFile,
+  getEcc3
 }
