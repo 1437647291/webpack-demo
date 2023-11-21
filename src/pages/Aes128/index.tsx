@@ -7,7 +7,7 @@ import { getAes } from '../../api';
 
 const { Option } = Select;
 
-const AlgorithmOne = () => {
+const AlgorithmOne = props => {
   const [content, setContent] = useState([]);
   const [newContent, setNewContent] = useState([]);
 
@@ -41,7 +41,7 @@ const AlgorithmOne = () => {
   return (
     <div className='algorithm-one'>
       <div className='algorithm-form'>
-        <CreateAlgorithm />
+        <CreateAlgorithm aaksdjflakjsdkaj={2} />
         <Form
           name="basic"
           labelCol={{ span: 6 }}

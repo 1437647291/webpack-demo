@@ -7,9 +7,9 @@ import './main.less';
 
 ReactDOM.render(
   <div className='main'>
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       <App />
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </div>,
   document.getElementById('box')
 )

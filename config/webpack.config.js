@@ -31,8 +31,8 @@ module.exports = {
   entry: './src/main.js',
   // 将one.js two.js 打包成两个文件
   // entry: {
-  //   one: './src/one',
-  //   two: './src/two'
+  //   one: './src/pages/RSA1',
+  //   two: './src/pages/RSA2'
   // },
   // entry: ['./src/one', './src/two'], // 将one.js two.js 打包成一个文件
 
@@ -52,7 +52,7 @@ module.exports = {
       template: path.resolve('index.html'), // 生成的html模版
       // filename: 'one.html',
       inject: 'body', // js引入的位置 为true 或者 “body”时script标签在页面底部，值为head在head标签里
-      // chunks: ['one'], // 决定页面引入哪个js文件，如果不写则全部引入
+      // chunks: ['one', 'two'], // 决定页面引入哪个js文件，如果不写则全部引入
 
       minify: { // 压缩页面
         collapseWhitespace: true, // 移除空格

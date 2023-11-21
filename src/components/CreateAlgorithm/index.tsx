@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { Button, Input, message, Select } from 'antd';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { createKey } from '../../api';
@@ -7,7 +7,9 @@ import './index.less';
 
 const { Option } = Select;
 
-const CreateAlgorithm = () => {
+const CreateAlgorithm = props => {
+  const { aaksdjflakjsdkaj, b } = props;
+  console.log(aaksdjflakjsdkaj, b)
   const [val, setVal] = useState('');
   const [selValue, setSelValue] = useState(8);
 

@@ -32,7 +32,7 @@ import Binary from './pages/Binary';
 import SM21 from './pages/SM21';
 import SM22 from './pages/SM22';
 import SM23 from './pages/SM23';
-import Test from './pages/test';
+import Test from './pages/Test';
 import './utils/sm2';
 import './utils/sm3';
 import './utils/sm4';
@@ -205,11 +205,11 @@ const App = props => {
                   },
                 ]
               },
-              // {
-              //   key: '9',
-              //   icon: <UploadOutlined />,
-              //   label: <Link style={{ color: '#fff' }} to="/test">TEST</Link>,
-              // }
+              {
+                key: '9',
+                icon: <UploadOutlined />,
+                label: <Link style={{ color: '#fff' }} to="/test">测试页面</Link>,
+              },
             ]}
           />
         </Sider>
@@ -230,7 +230,7 @@ const App = props => {
           >
             <Switch>
               <Route path="/aes128">
-                <Aes128 />
+                <Aes128 a="1" b="2" onClick={() => console.log('dianji')} ob={{ name: 'hss', age: 18 }} />
               </Route>
               <Route path="/aesEncryptionDecryption">
                 <AesEncryptionDecryption />
@@ -298,9 +298,9 @@ const App = props => {
               <Route path="/sm23">
                 <SM23 />
               </Route>
-              {/* <Route path="/test">
+              <Route path="/test">
                 <Test />
-              </Route> */}
+              </Route>
             </Switch>
           </Content>
         </Layout>

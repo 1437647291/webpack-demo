@@ -1,46 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from 'antd';
-import { stringify } from '_rc-field-form@1.27.2@rc-field-form/es/useWatch';
+import React, { useState, useEffect, useRef } from 'react';
+import { flushSync } from 'react-dom';
+import { Input, Button } from 'antd';
+import Child from './components/Child';
+import Brother from './components/Brother';
 
-// import styles from './index.module.less';
 
 const Test = () => {
-  const [state, setState] = useState(1);
+  const ulRef = useRef(null);
+  const [isPrinting, setIsPrinting] = useState(false);
+  const [numArr, setNumArr] = useState([]);
 
-  const arr = [
-    { a: 1, b: 2 },
-    { a: 1, b: 2 },
-    { a: 1, b: 3 },
-  ];
-  const a = (c, d) => {
-    if (c.a === d.a && c.b === d.b) {
-      return true;
-    } else {
-      return false;
-    }
+  const getNum = () => {
+    console.log('numArr111', numArr);
   };
 
-  const e = new Set(arr, a);
-  console.log(e, e)
-  // let formatArr = [];
-  // arr.forEach(item => {
-  //   const curItem = formatArr.find(formatItem => (formatItem.a === item.a && formatItem.b === item.b));
-  //   if (!curItem) {
-  //     formatArr.push(item);
-  //   }
-  // });
-  // console.log('arr', arr)
-  // console.log('formatArr', formatArr)
-  
+  const addNum = () => {
+    flushSync(() => {
+      setNumArr([ ...numArr, numArr.length + 1 ]);
+    });
+    console.log(ulRef.current.lastChild)
+    getNum();
+  };
+
   return (
     <div>
-      {/* <div className={styles.box2}>
-        <div className={styles.box3}></div>
-      </div> */}
-      {/* { state } */}
-      {/* <Button style={{ marginTop: '300px' }}>登录</Button> */}
+      <ul ref={ulRef}>
+        {
+          numArr.map(item => (
+            <li key={item}>{item}</li>
+          ))
+        }
+      </ul>
+      <Child num={1} />
+      <Brother />
+      <Button onClick={addNum}>+1</Button>
     </div>
   )
 };
 
 export default Test;
+
+// 非阻塞的渲染模式 然后提出了filber(本质是个链表)
