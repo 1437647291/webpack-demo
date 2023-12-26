@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Button } from 'antd';
 
-const Brother = () => {
-  const [num, setNum] = useState(0);
+const Brother = props => {
+  const { num, addBrotherNum } = props;
+
+  useEffect(() => {
+    // console.log('Effect zhixing')
+  }, []);
+  
   return (
     <div>
       <div>Brother：{num}</div>
-      <Button onClick={() => setNum(num + 1)}>Brother组件+1</Button>
+      <Button onClick={addBrotherNum}>Brother组件+1</Button>
     </div>
   )
 };
 
-export default Brother;
+export default memo(Brother);
