@@ -33,6 +33,7 @@ import SM21 from './pages/SM21';
 import SM22 from './pages/SM22';
 import SM23 from './pages/SM23';
 import Test from './pages/Test';
+import CodeMirrorPro from './pages/CodeMirrorPro';
 import './utils/sm2';
 import './utils/sm3';
 import './utils/sm4';
@@ -210,6 +211,11 @@ const App = props => {
                 icon: <UploadOutlined />,
                 label: <Link style={{ color: '#fff' }} to="/test">测试页面</Link>,
               },
+              {
+                key: '10',
+                icon: <UploadOutlined />,
+                label: <Link style={{ color: '#fff' }} to="/codemirror">codemirror</Link>,
+              },
             ]}
           />
         </Sider>
@@ -300,6 +306,9 @@ const App = props => {
               </Route>
               <Route path="/test">
                 <Test />
+              </Route>
+              <Route path="/codemirror">
+                <CodeMirrorPro />
               </Route>
             </Switch>
           </Content>

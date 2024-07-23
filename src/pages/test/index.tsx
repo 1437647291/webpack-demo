@@ -1,9 +1,16 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo, useReducer } from 'react';
 import { flushSync } from 'react-dom';
-import { Input, Button } from 'antd';
+import { Input, Button, Modal, DatePicker } from 'antd';
+import { useThrottleFn } from 'ahooks';
+import { useUpdateEffect }  from 'ahooks';
 import Child from './components/Child';
 import Child1 from './components/Child1'; // 测试useState初始化传入一个函数本身和函数执行的区别
 import Brother from './components/Brother';
+import SortablePro from './components/SortablePro';
+import UnitTest from './components/UnitTest';
+import RatePro from './components/RatePro';
+import WebWorkerTest from './components/WebWorkerTest';
+import moment from 'moment';
 
 const reducer = (state, action) => {
   // console.log('----', state, action);
@@ -33,51 +40,27 @@ const init = (params) => {
   }
 }
 
+const { RangePicker } = DatePicker;
 
 const Test = () => {
-  const [brotherNum, setBrotherNum] = useState<number>(0);
-  const [num, setNum] = useState<string>(1);
-  const [state, setState] = useReducer(reducer, init({ name: 'hss', age: 18 }));
-
-  const addBrotherNum = useCallback(() => {
-    setBrotherNum(brotherNum + 1);
-    setState({ type: 'change_age' })
-  }, [brotherNum]);
-
-  const addnum = () => {
-    setNum(num + 1);
-    setState({ type: 'change_name', nextName: 'wtg' });
-  };
-
-  const createOptions = useCallback(() => {
-    return {
-      a: 1
-    }
-  }, [brotherNum]);
-
-  const childInfo = useMemo(() => {
-    if (brotherNum === 0) {
-      return {
-        msg: '你的兄弟组件是原始状态'
-      }
-    } else {
-      return {
-        msg: '你的兄弟组件已经被修改了'
-      }
-    }
-  }, []);
+  const [date, setDate] = useState<any>(undefined);
 
   useEffect(() => {
-    const a = createOptions();
-  }, [createOptions]);
+    const endTime = new Date().getTime();
+    const endDate = moment(endTime).format('YYYY-MM-DD');
+    const startDate =  moment(endDate).subtract(1, 'months').format('YYYY-MM-DD');
+    setDate([moment(startDate), moment(endDate)]);
+  }, []);
 
   return (
     <div>
-      {/* <div>{num}-{state.name}-{state.age}-{state.sex}</div>
-      <Button type="primary" onClick={addnum}>+1</Button>
-      <Child childInfo={childInfo} />
-      <Brother num={brotherNum} addBrotherNum={addBrotherNum} /> */}
-      <Child1 />
+      {/* <RangePicker
+        value={date}
+      /> */}
+      {/* <SortablePro /> */}
+      {/* <RatePro /> */}
+      {/* <UnitTest /> */}
+      <WebWorkerTest />
     </div>
   )
 };

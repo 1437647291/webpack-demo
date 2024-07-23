@@ -41,7 +41,8 @@ module.exports = {
   output: {
     publicPath: "/",
     path: path.resolve('dist'),
-    filename: 'js/[name].boundle.js',
+    filename: 'js/[name].bundle.[contenthash:8].js',  // index.js 被打包出来的文件
+    chunkFilename: 'js/[name].chunk.[contenthash:8].js',
   },
 
 
@@ -171,7 +172,7 @@ module.exports = {
       // 使用postcss-loader 需要新建post.config.js进行配置
       {
         test: /\.css$/,
-        use: [ MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader' ]
+        use: [ MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader' ],
       },
       // 处理less文件，需要less-loader先解析less文件，css-loader将less文件转换成css，MiniCssExtractPlugin.loader再将css文件提取出来
       {
